@@ -8,10 +8,21 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Task List') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
+    <style type="text/css">
+        .main.container {
+            padding-top: 6em;
+            padding-bottom: 2em;
+        }
+
+        table td form {
+            display: inline;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -19,7 +30,7 @@
             <div class="container">
                 <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
+
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
                         <span class="sr-only">Toggle Navigation</span>
                         <span class="icon-bar"></span>
@@ -27,9 +38,9 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <!-- Branding Image -->
+
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Task List') }}
                     </a>
                 </div>
 
@@ -74,7 +85,20 @@
         @yield('content')
     </div>
 
+
+
+    @guest
+        <div style="text-align:center">Please login to create some tasks</div>
+    @else
+        <div class="ui main text container">
+            @yield('listContent')
+        </div>
+    @endguest
+
+
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
 </body>
 </html>

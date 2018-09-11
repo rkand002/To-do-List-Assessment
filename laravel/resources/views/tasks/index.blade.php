@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
-@section('content')
+@section('listContent')
 
   @include('tasks.createTaskForm')
   @include('tasks.list')
